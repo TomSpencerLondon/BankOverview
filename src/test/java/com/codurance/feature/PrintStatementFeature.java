@@ -16,8 +16,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 @ExtendWith(MockitoExtension.class)
 public class PrintStatementFeature {
 
-  @Mock
-  TransactionRepository transactionRepository;
 
   @Mock
   private Console console;
@@ -26,6 +24,7 @@ public class PrintStatementFeature {
 
   @BeforeEach
   void setUp() {
+    TransactionRepository transactionRepository = new TransactionRepository();
     account = new Account(transactionRepository);
   }
 
