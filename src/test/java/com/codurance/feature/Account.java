@@ -1,16 +1,22 @@
 package com.codurance.feature;
 
+import com.codurance.Console;
+
 public class Account {
 
+  private final Console console;
+
+  public Account(Console console) {
+    this.console = console;
+  }
+
   public void deposit(int amount) {
-    throw new UnsupportedOperationException("Implement me!");
   }
 
   public void withdraw(int amount) {
-    throw new UnsupportedOperationException("Implement me!");
   }
 
   public void printStatement() {
-    throw new UnsupportedOperationException("Implement me!");
+    console.printLine("DATE | AMOUNT | BALANCE");
   }
 }
