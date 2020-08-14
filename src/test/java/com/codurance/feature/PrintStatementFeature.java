@@ -2,7 +2,9 @@ package com.codurance.feature;
 
 import static org.mockito.Mockito.verify;
 
+import com.codurance.Account;
 import com.codurance.Console;
+import com.codurance.TransactionRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -15,13 +17,16 @@ import org.mockito.junit.jupiter.MockitoExtension;
 public class PrintStatementFeature {
 
   @Mock
+  TransactionRepository transactionRepository;
+
+  @Mock
   private Console console;
 
   private Account account;
 
   @BeforeEach
   void setUp() {
-    account = new Account(console);
+    account = new Account(transactionRepository);
   }
 
   @Test
