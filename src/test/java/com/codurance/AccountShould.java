@@ -1,7 +1,10 @@
 package com.codurance;
 
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 
+import java.util.Arrays;
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,9 +19,12 @@ public class AccountShould {
   @Mock
   private TransactionRepository transactionRepository;
 
+  @Mock
+  private StatementPrinter statementPrinter = new StatementPrinter();
+
   @BeforeEach
   void setUp() {
-    account = new Account(transactionRepository);
+    account = new Account(transactionRepository, statementPrinter);
   }
 
   @Test
@@ -26,5 +32,22 @@ public class AccountShould {
     account.deposit(100);
 
     verify(transactionRepository).addDeposit(100);
+  }
+
+  @Test
+  void store_a_withdrawal_transaction() {
+    account.withdraw(100);
+
+    verify(transactionRepository).addWithdrawal(100);
+  }
+
+  @Test
+  void print_a_statement() {
+    List<Transaction> transactions = Arrays.asList(new Transaction());
+    given(transactionRepository.allTransactions()).willReturn(transactions);
+
+    account.printStatement();
+
+    verify(statementPrinter).print(transactions);
   }
 }
