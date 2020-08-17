@@ -3,6 +3,7 @@ package com.codurance.feature;
 import static org.mockito.Mockito.verify;
 
 import com.codurance.Account;
+import com.codurance.Clock;
 import com.codurance.Console;
 import com.codurance.StatementPrinter;
 import com.codurance.TransactionRepository;
@@ -23,9 +24,12 @@ public class PrintStatementFeature {
 
   private Account account;
 
+  @Mock
+  private Clock clock;
+
   @BeforeEach
   void setUp() {
-    TransactionRepository transactionRepository = new TransactionRepository();
+    TransactionRepository transactionRepository = new TransactionRepository(clock);
     StatementPrinter statementPrinter = new StatementPrinter();
     account = new Account(transactionRepository, statementPrinter);
   }

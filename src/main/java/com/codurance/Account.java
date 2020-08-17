@@ -3,11 +3,11 @@ package com.codurance;
 public class Account {
 
   private TransactionRepository transactionRepository;
-  private final StatementPrinter printer;
+  private final StatementPrinter statementPrinter;
 
-  public Account(TransactionRepository transactionRepository, StatementPrinter printer) {
+  public Account(TransactionRepository transactionRepository, StatementPrinter statementPrinter) {
     this.transactionRepository = transactionRepository;
-    this.printer = printer;
+    this.statementPrinter = statementPrinter;
   }
 
   public void deposit(int amount) {
@@ -19,5 +19,6 @@ public class Account {
   }
 
   public void printStatement() {
+    statementPrinter.print(transactionRepository.allTransactions());
   }
 }
