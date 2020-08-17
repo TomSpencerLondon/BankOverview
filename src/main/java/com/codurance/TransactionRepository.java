@@ -3,7 +3,6 @@ package com.codurance;
 import static java.util.Collections.unmodifiableList;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class TransactionRepository {
@@ -16,12 +15,13 @@ public class TransactionRepository {
   }
 
   public void addDeposit(int amount) {
-    Transaction depositTransaction = new Transaction(clock.todayAsString(), amount);
-    transactions.add(depositTransaction);
+    Transaction deposit = new Transaction(clock.todayAsString(), amount);
+    transactions.add(deposit);
   }
 
   public void addWithdrawal(int amount) {
-    throw new UnsupportedOperationException("Implement me!");
+    Transaction withdrawal = new Transaction(clock.todayAsString(), -amount);
+    transactions.add(withdrawal);
   }
 
   public List<Transaction> allTransactions() {

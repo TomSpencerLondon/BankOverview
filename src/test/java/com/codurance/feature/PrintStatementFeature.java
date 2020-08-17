@@ -21,11 +21,11 @@ public class PrintStatementFeature {
 
   @Mock
   private Console console;
+  @Mock
+  private Clock clock;
 
   private Account account;
 
-  @Mock
-  private Clock clock;
 
   @BeforeEach
   void setUp() {

@@ -37,6 +37,18 @@ public class TransactionRepositoryShould {
     assertEquals(transaction(TODAY, 100), transactions.get(0));
   }
 
+  @Test
+  void create_and_store_a_withdrawal_transaction() {
+    given(clock.todayAsString()).willReturn(TODAY);
+
+    transactionRepository.addWithdrawal(100);
+
+    List<Transaction> transactions = transactionRepository.allTransactions();
+
+    assertEquals(1, transactions.size());
+    assertEquals(transaction(TODAY, -100), transactions.get(0));
+  }
+
   private Transaction transaction(String date, int amount) {
     return new Transaction(date, amount);
   }
