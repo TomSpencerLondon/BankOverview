@@ -11,11 +11,11 @@ public class Account {
   }
 
   public void deposit(int amount) {
-    transactionRepository.addDeposit(100);
+    transactionRepository.addDeposit(amount);
   }
 
   public void withdraw(int amount) {
-    transactionRepository.addWithdrawal(100);
+    transactionRepository.addWithdrawal(amount);
   }
 
   public void printStatement() {

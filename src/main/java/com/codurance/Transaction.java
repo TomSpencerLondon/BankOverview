@@ -1,7 +1,7 @@
 package com.codurance;
 
-
-import java.util.Objects;
+import static org.apache.commons.lang3.builder.EqualsBuilder.reflectionEquals;
+import static org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCode;
 
 public class Transaction {
 
@@ -16,20 +16,12 @@ public class Transaction {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    Transaction that = (Transaction) o;
-    return amount == that.amount &&
-        Objects.equals(date, that.date);
+    return reflectionEquals(this, o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(date, amount);
+    return reflectionHashCode(this);
   }
 
   public String date() {
