@@ -20,7 +20,7 @@ public class AccountShould {
   private TransactionRepository transactionRepository;
 
   @Mock
-  private StatementPrinter statementPrinter = new StatementPrinter();
+  private StatementPrinter statementPrinter;
 
   @BeforeEach
   void setUp() {
