@@ -50,4 +50,6 @@ public class PrintStatementFeature {
     inOrder.verify(console).printLine("02/04/2014 | -100.00 | 900.00");
     inOrder.verify(console).printLine("01/04/2014 | 1000.00 | 1000.00");
   }
+
+
 }
